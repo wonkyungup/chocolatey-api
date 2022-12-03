@@ -1,0 +1,31 @@
+{
+  "name": "ms-store-api",
+  "version": "0.0.1",
+  "description": "ms-store-api",
+  "main": "handler.js",
+  "private": "true",
+  "scripts": {
+    "offline": "nodemon --exec serverless offline start"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.19.3",
+    "@babel/core": "7.19.6",
+    "@babel/preset-env": "7.19.4",
+    "babel-loader": "9.1.0",
+    "nodemon": "2.0.20",
+    "serverless-latest-layer-version": "2.1.2",
+    "serverless-offline": "11.2.3",
+    "serverless-plugin-layer-manager": "1.0.6",
+    "serverless-webpack": "5.10.0",
+    "webpack": "5.74.0",
+    "webpack-node-externals": "3.0.0"
+  },
+  "dependencies": {
+    "axios": "1.2.0",
+    "cheerio": "1.0.0-rc.12",
+    "chrome-aws-lambda": "10.1.0",
+    "puppeteer": "19.2.2",
+    "puppeteer-core": "10.4.0",
+    "zlib": "1.0.5"
+  }
+}

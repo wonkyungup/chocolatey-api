@@ -1,0 +1,29 @@
+service: chocolatey-software-api
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+
+custom:
+  webpack:
+    webpackConfig: ./webpack.config.js
+    includeModules: false
+
+functions:
+  index:
+    timeout: 30
+    handler: handler.index
+    events:
+      - http:
+          path: /choco/app/{packageName}
+          method: get
+    layers:
+      - arn:aws:lambda:us-east-1:778906112548:layer:nodejs:latest
+
+plugins:
+  - serverless-plugin-layer-manager
+  - serverless-latest-layer-version
+  - serverless-webpack
+  - serverless-offline
