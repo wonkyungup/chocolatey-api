@@ -8,7 +8,7 @@
 
 ### Getting started
 
-To get your product ID, please do the following:
+To get your product package name, please do the following:
 
 1. Open [Chocolatey software](https://community.chocolatey.org/packages) browser 
 2. Copy the package name
