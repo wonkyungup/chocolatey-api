@@ -6,20 +6,13 @@ import * as cheerio from 'cheerio'
 import Response from './assets/response'
 import Defs from './assets/constants'
 
-const getGunzipSync = (packageName) => {
-    return new Promise(async resolve => {
-        try {
-            const html = await axios.get(`${Defs.CHOCOLATEY_URL}/${packageName}`, { responseType: 'arraybuffer' })
-            zlib.gunzip(html.data, (err, output) => {
-                if (err) {
-                    throw new Error('zlib error')
-                }
-                resolve(output.toString())
-            })
-        } catch (error) {
-            resolve(false)
-        }
-    })
+const getGunzipSync = async (packageName) => {
+    try {
+        const html = await axios.get(`${Defs.CHOCOLATEY_URL}/${packageName}`, { responseType: Defs.ZLIB_RESPONSE_TYPE })
+        return zlib.gunzipSync(html.data)
+    } catch (err) {
+        throw new Error(err['message'])
+    }
 }
 
 export const index = async (event, context) => {
