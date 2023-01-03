@@ -5,5 +5,6 @@ export default class Defs {
     static CHOCOLATEY_URL = 'https://community.chocolatey.org/packages'
     static CHOCOLATEY_CATCH_ERROR = 'The package name is invalid.'
 
-    static ZLIB_RESPONSE_TYPE = 'arraybuffer'
+    static STR_RESPONSE_TYPE = 'responseType'
+    static STR_ARRAY_BUFFER = 'arraybuffer'
 }
