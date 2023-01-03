@@ -1,15 +1,15 @@
 'use strict'
 
 import axios from 'axios'
-import zlib from 'zlib'
+import * as zlib from 'zlib'
 import * as cheerio from 'cheerio'
 import Response from './assets/response'
 import Defs from './assets/constants'
 
-const getGunzipSync = async (packageName) => {
+const getUnzipUrl = async (packageName) => {
     try {
-        const html = await axios.get(`${Defs.CHOCOLATEY_URL}/${packageName}`, { responseType: Defs.ZLIB_RESPONSE_TYPE })
-        return zlib.gunzipSync(html.data)
+        const html = await axios.get(`${Defs.CHOCOLATEY_URL}/${packageName}`, { [Defs.STR_RESPONSE_TYPE]: Defs.STR_ARRAY_BUFFER })
+        return zlib.unzipSync(html['data'])
     } catch (err) {
         throw new Error(err['message'])
     }
@@ -20,7 +20,7 @@ export const index = async (event, context) => {
     const app = {}
 
     try {
-        const $ = cheerio.load(await getGunzipSync(event.pathParameters['packageName']))
+        const $ = cheerio.load(await getUnzipUrl(event.pathParameters['packageName']))
         const $main = $('#package-sidebar')
 
         app['Name'] = event.pathParameters['packageName']

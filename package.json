@@ -22,7 +22,6 @@
   },
   "dependencies": {
     "axios": "1.2.0",
-    "cheerio": "1.0.0-rc.12",
-    "zlib": "1.0.5"
+    "cheerio": "1.0.0-rc.12"
   }
 }
