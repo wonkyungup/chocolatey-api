@@ -22,7 +22,8 @@ export default class App {
             result = zlib.unzipSync(result['data'])
 
             this.$ = cheerio.load(result)
-            this.$main = this.$('#package-sidebar')
+            this.$main = this.$('#packageSidebar')
+
             return this
         } catch (err) {
             this.onError(err['message'])
@@ -39,8 +40,8 @@ export default class App {
 
     async getDownloads () {
         try {
-            const $main = this.$('#package-sidebar')
-            return $main.find('h3:eq(0)').text()
+            const _$main = this.$main
+            return _$main.find('h3:eq(0)').text()
         } catch (err) {
             this.onError(err['message'])
         }
